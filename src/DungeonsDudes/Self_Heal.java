@@ -1,27 +1,30 @@
 package DungeonsDudes;/*
- * Created by L1ND3 on 03.03.2017. 
+ * Created by L1ND3 on 05.03.2017. 
  */
 
-public class Punch implements Effect {
+public class Self_Heal implements Effect{
     private boolean expired = true;
-    private int duration = 0;
-    private int cost = 1;
-
+    private int duration = 5;
+    private int cost = 5;
 
     @Override
     public void onHit(Dude target, Dude myself) {
-        int hit = (int) Math.round(Math.random()*2);
-        target.takeDamage(hit);
-        System.out.println("Lõin rusikaga ja tegin " + hit + " dmg. Vastasel jäi " + target.getHealth() + " elu.");
+        myself.changeHealth(5);
+        expired = false;
+        System.out.println("Ravisin ennast!(health + 5)");
     }
 
     @Override
     public void beforeTurn(Dude target, Dude myself) {
-
+        duration--;
+        if (duration == 0){
+            expired = true;
+        }
     }
 
     @Override
     public void afterTurn(Dude target, Dude myself) {
+
     }
 
     @Override
@@ -29,13 +32,13 @@ public class Punch implements Effect {
         return expired;
     }
 
+    @Override
     public int getCost() {
         return cost;
     }
 
     @Override
     public void miss() {
-        System.out.println("Lõin rusikaga mööda!");
-    }
 
+    }
 }

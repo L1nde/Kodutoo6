@@ -8,7 +8,7 @@ public class Dot implements Effect {
     private int cost = 5;
 
     @Override
-    public void onHit(Dude target) {
+    public void onHit(Dude target, Dude myself) {
         expired = false;
         duration = 5;
         target.takeDamage(1);
@@ -16,19 +16,17 @@ public class Dot implements Effect {
     }
 
     @Override
-    public void beforeTurn(Dude target) {
-        if (!expired){
-            if (duration>2){
-                target.takeDamage(1);
-                System.out.println("Vastane veritseb! Vastasel jäi " + target.getHealth() + " elu.");
-            }
-            if (duration == 0) expired = true;
-            duration--;
+    public void beforeTurn(Dude target, Dude myself) {
+        if (duration>2){
+            target.takeDamage(1);
+            System.out.println("Vastane veritseb! Vastasel jäi " + target.getHealth() + " elu.");
         }
+        if (duration == 0) expired = true;
+        duration--;
     }
 
     @Override
-    public void afterTurn(Dude target) {
+    public void afterTurn(Dude target, Dude myself) {
     }
 
     @Override

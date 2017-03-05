@@ -8,27 +8,28 @@ public class Self_Stealth implements Effect {
     private int duration = 5;
 
     @Override
-    public void onHit(Dude target) {
-        target.changeArmor(7);
+    public void onHit(Dude target, Dude myself) {
+        myself.changeArmor(10);
         System.out.println("Sain adrenaliini laksu!(Armor + 7)");
         expired = false;
     }
 
     @Override
-    public void beforeTurn(Dude target) {
-        if (duration == 3){
-            target.changeArmor(-7);
-            System.out.println("Adrenaliini laks on läbi!(Armor -7)");
+    public void beforeTurn(Dude target, Dude myself) {
+        if (!expired){
+            if (duration == 3){
+                myself.changeArmor(-7);
+                System.out.println("Adrenaliini laks on läbi!(Armor -7)");
+            }
+            if (duration == 0){
+                expired = true;
+            }
+            duration--;
         }
-        if (duration == 0){
-            expired = true;
-        }
-        duration--;
     }
 
     @Override
-    public void afterTurn(Dude target) {
-
+    public void afterTurn(Dude target, Dude myself) {
     }
 
     @Override

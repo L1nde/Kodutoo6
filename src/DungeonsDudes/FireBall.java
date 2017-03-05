@@ -8,19 +8,19 @@ public class FireBall implements Effect {
     private int cost = 5;
 
     @Override
-    public void onHit(Dude target) {
-        int hit = (int) Math.round(Math.random()*10);
+    public void onHit(Dude target, Dude myself) {
+        int hit = (int) Math.round(Math.random()*6+1);
         target.takeDamage(hit);
         System.out.println("Fireball tabas " + hit + " dmg. Vastasel jäi " + target.getHealth() + " elu.");
     }
 
     @Override
-    public void beforeTurn(Dude target) {
+    public void beforeTurn(Dude target, Dude myself) {
 
     }
 
     @Override
-    public void afterTurn(Dude target) {
+    public void afterTurn(Dude target, Dude myself) {
 
     }
 

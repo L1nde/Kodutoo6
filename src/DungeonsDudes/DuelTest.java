@@ -9,7 +9,12 @@ public class DuelTest {
         Rogue rogue2 = new Rogue("Rogue 2");
         Wizard wizard1 = new Wizard("Wizard 1");
         Wizard wizard2 = new Wizard("Wizard 2");
-        Attack(rogue1, rogue2);
+        Attack(fighter1, wizard2);
+//        Attack(rogue1, wizard2);
+//        Attack(rogue1, fighter2);
+//        Attack(fighter1, fighter2);
+//        Attack(wizard1, wizard2);
+//        Attack(rogue1, rogue2);
     }
 
     public static void Attack(Dude enemy1, Dude enemy2){
@@ -17,12 +22,12 @@ public class DuelTest {
             enemy1.takeTurn(enemy2);
             if (!enemy2.isAlive()){
                 System.out.println(enemy1.getName() + " võitis!");
-                break;
+                return;
             }
             enemy2.takeTurn(enemy1);
             if (!enemy1.isAlive()){
                 System.out.println(enemy2.getName() + " võitis!");
-                break;
+                return;
             }
         }
     }
