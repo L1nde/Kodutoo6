@@ -1,5 +1,4 @@
-package DungeonsDudes;
-
+package DungeosDude;
 
 public class DuelTest {
     public static void main(String[] args) {

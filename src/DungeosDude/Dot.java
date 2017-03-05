@@ -1,6 +1,4 @@
-package DungeonsDudes;/*
- * Created by L1ND3 on 03.03.2017. 
- */
+package DungeosDude;
 
 public class Dot implements Effect {
     private boolean expired = true;

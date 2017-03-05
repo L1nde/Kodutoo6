@@ -8,7 +8,6 @@ public class DigiTV extends TV {
 
     public DigiTV(String owner) {
         super(owner);
-
     }
 
     @Override
